@@ -1,5 +1,7 @@
 import Images from "assets/img";
 
+import itemList from "config/items.json";
+
 export enum ItemType {
     Weapon = 0,
     Bow = 1,
@@ -16,6 +18,7 @@ export const ItemTypes = [
 	ItemType.Bow,
 	ItemType.Arrow,
 	ItemType.Shield,
+	ItemType.Armor,
 	ItemType.Material,
 	ItemType.Meal,
 	ItemType.Key
@@ -104,12 +107,14 @@ const register = (_id: number, item: Item, type: ItemType, options?: Partial<Ite
 	TypeToCount[type]++;
 	const data: ItemData = {
 		item,
-		image: Images[`${item}`],
 		type,
 		repeatable: true,
 		stackable: true,
 		sortOrder,
-		...options||{}
+		...options||{},
+		// If defined, the "image" on the options object is actually an image key. Thus, we must resolve it after
+		// options are applied to override it with the correct value (falling back on item name if undefined)
+		image: Images[`${options?.image || item}`],
 	};
 	// if(id in IdToData){
 	// 	console.error("Multiple items registered to the same id: "+id+", ("+item+")");
@@ -117,76 +122,14 @@ const register = (_id: number, item: Item, type: ItemType, options?: Partial<Ite
 	//IdToData[id] = data;
 	ItemToData[item] = data;
 };
+const getItemTypeValueByName = (type: string) => {
+	return Object.entries(ItemType).find(([key]) => key === type)?.[1];
+};
 
-register(0x00, Item.Slate, ItemType.Key, {
-	repeatable: false,
-	stackable: false
-});
-register(0x01, Item.Glider, ItemType.Key, {
-	repeatable: false,
-	stackable: false
-});
-register(0x02, Item.SpiritOrb, ItemType.Key);
-register(0, Item.Apple, ItemType.Material);
-register(0, Item.SpicyPepper, ItemType.Material);
-register(0x11, Item.Lotus, ItemType.Material);
-register(0, Item.EnduraShroom, ItemType.Material);
-register(0, Item.HylianShroom, ItemType.Material);
-register(0x20, Item.Rushroom, ItemType.Material);
-register(0, Item.BigHeartyRadish, ItemType.Material);
-register(0, Item.HeartyRadish, ItemType.Material);
-register(0x12, Item.SilentPrincess, ItemType.Material);
-register(0x13, Item.Honey, ItemType.Material);
-register(0x14, Item.Acorn, ItemType.Material);
-register(0x15, Item.FaroshScale, ItemType.Material);
-register(0x16, Item.FaroshClaw, ItemType.Material);
-register(0x17, Item.FaroshHorn, ItemType.Material);
-register(0x18, Item.HeartyBass, ItemType.Material);
-register(0x21, Item.HyruleBass, ItemType.Material);
-register(0, Item.Fairy, ItemType.Material);
-register(0x19, Item.Beetle, ItemType.Material);
-register(0x1a, Item.Opal, ItemType.Material);
-register(0x10, Item.Diamond, ItemType.Material);
-register(0x23, Item.LizalfosHorn, ItemType.Material);
-register(0x24, Item.LizalfosTalon, ItemType.Material);
-register(0x1b, Item.Tail, ItemType.Material);
-register(0x22, Item.Screw, ItemType.Material);
-register(0x1c, Item.Spring, ItemType.Material);
-register(0x1d, Item.Shaft, ItemType.Material);
-register(0x1e, Item.Core, ItemType.Material);
-register(0x1f, Item.Wood, ItemType.Material);
-
-register(0x40, Item.SpeedFood, ItemType.Meal, {
-	stackable: false
-});
-register(0, Item.EnduraFood, ItemType.Meal, {
-	stackable: false
-});
-register(0x50, Item.Weapon, ItemType.Weapon, {
-	image: Images.Axe,
-	stackable: false
-});
-register(0, Item.MasterSword, ItemType.Weapon, {
-	stackable: false,
-});
-
-register(0x60, Item.Bow, ItemType.Bow, {
-	image: Images.ForestDwellerBow,
-	stackable: false
-});
-register(0x70, Item.NormalArrow, ItemType.Arrow);
-register(0x71, Item.FireArrow, ItemType.Arrow);
-register(0x72, Item.IceArrow, ItemType.Arrow);
-register(0x73, Item.ShockArrow, ItemType.Arrow);
-register(0x74, Item.BombArrow, ItemType.Arrow);
-register(0x75, Item.AncientArrow, ItemType.Arrow);
-register(0x80, Item.Shield, ItemType.Shield, {
-	image: Images.PotLid,
-	stackable: false
-});
-
-register(9, Item.ZoraArmor, ItemType.Armor, {
-	stackable: false
+itemList.items.forEach(itemData => {
+	// Default id to 0 if undefined in config file
+	const id = itemData.id ? Number(itemData.id) : 0;
+	register(id, itemData.item as Item, getItemTypeValueByName(itemData.type) as ItemType, itemData.options);
 });
 
 //export const idToItemData = (id: number): ItemData => IdToData[id];

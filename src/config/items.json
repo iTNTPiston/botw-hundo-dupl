@@ -1,0 +1,55 @@
+{
+  "items": [
+    { "item": "MasterSword", "type": "Weapon", "options": { "stackable": false } },
+    { "id": "0x50", "item": "Weapon", "type": "Weapon", "options": { "image": "Axe", "stackable": false } },
+
+    { "id": "0x60", "item": "Bow", "type": "Bow", "options": { "image": "ForestDwellerBow", "stackable": false } },
+
+    { "id": "0x70", "item": "NormalArrow", "type": "Arrow" },
+    { "id": "0x71", "item": "FireArrow", "type": "Arrow" },
+    { "id": "0x72", "item": "IceArrow", "type": "Arrow" },
+    { "id": "0x73", "item": "ShockArrow", "type": "Arrow" },
+    { "id": "0x74", "item": "BombArrow", "type": "Arrow" },
+    { "id": "0x75", "item": "AncientArrow", "type": "Arrow" },
+
+    { "id": "0x80", "item": "Shield", "type": "Shield", "options": { "image": "PotLid", "stackable": false } },
+
+    { "id": "9", "item": "ZoraArmor", "type": "Armor", "options": { "stackable": false } },
+
+    { "item": "Apple", "type": "Material" },
+    { "item": "SpicyPepper", "type": "Material" },
+    { "id": "0x11", "item": "Lotus", "type": "Material" },
+    { "item": "EnduraShroom", "type": "Material" },
+    { "item": "HylianShroom", "type": "Material" },
+    { "id": "0x20", "item": "Rushroom", "type": "Material" },
+    { "item": "BigHeartyRadish", "type": "Material" },
+    { "item": "HeartyRadish", "type": "Material" },
+    { "id": "0x12", "item": "SilentPrincess", "type": "Material" },
+    { "id": "0x13", "item": "Honey", "type": "Material" },
+    { "id": "0x14", "item": "Acorn", "type": "Material" },
+    { "id": "0x15", "item": "FaroshScale", "type": "Material" },
+    { "id": "0x16", "item": "FaroshClaw", "type": "Material" },
+    { "id": "0x17", "item": "FaroshHorn", "type": "Material" },
+    { "id": "0x18", "item": "HeartyBass", "type": "Material" },
+    { "id": "0x21", "item": "HyruleBass", "type": "Material" },
+    { "item": "Fairy", "type": "Material" },
+    { "id": "0x19", "item": "Beetle", "type": "Material" },
+    { "id": "0x1a", "item": "Opal", "type": "Material" },
+    { "id": "0x10", "item": "Diamond", "type": "Material" },
+    { "id": "0x23", "item": "LizalfosHorn", "type": "Material" },
+    { "id": "0x24", "item": "LizalfosTalon", "type": "Material" },
+    { "id": "0x1b", "item": "Tail", "type": "Material" },
+    { "id": "0x22", "item": "Screw", "type": "Material" },
+    { "id": "0x1c", "item": "Spring", "type": "Material" },
+    { "id": "0x1d", "item": "Shaft", "type": "Material" },
+    { "id": "0x1e", "item": "Core", "type": "Material" },
+    { "id": "0x1f", "item": "Wood", "type": "Material" },
+
+    { "id": "0x40", "item": "SpeedFood", "type": "Meal", "options": { "stackable": false } },
+    { "item": "EnduraFood", "type": "Meal", "options": { "stackable": false } },
+
+    { "id": "0x00", "item": "Slate", "type": "Key", "options": { "repeatable": false, "stackable": false } },
+    { "id": "0x01", "item": "Glider", "type": "Key", "options": { "repeatable": false, "stackable": false } },
+    { "id": "0x02", "item": "SpiritOrb", "type": "Key" }
+  ]
+}
