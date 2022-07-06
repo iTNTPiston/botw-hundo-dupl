@@ -3,13 +3,14 @@ import { DisplayableSlot } from "core/DisplayableInventory";
 import Background from "assets/Background.png";
 
 type ItemSlotProps = {
-  slot: DisplayableSlot
+  slot: DisplayableSlot,
+	isAnimated: boolean
 };
 
-export const ItemSlot: React.FC<ItemSlotProps> = ({slot: {image, description, count, isBrokenSlot, isEquipped, displayCount}})=>{
+export const ItemSlot: React.FC<ItemSlotProps> = ({slot: {image, animatedImage, description, count, isBrokenSlot, isEquipped, displayCount}, isAnimated})=>{
 	return (
 		<span className={clsx("ItemSlot", isBrokenSlot && "ItemSlotBroken", isEquipped && "ItemSlotEquipped")}>
-			<img className={clsx("ItemImage")} src={image} title={description}/>
+			<img className={clsx("ItemImage")} src={isAnimated && animatedImage ? animatedImage : image} title={description}/>
 			{
 				displayCount && <span className={"ItemCount"}>
           x{count}

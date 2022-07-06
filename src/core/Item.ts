@@ -294,6 +294,8 @@ type ItemData = {
 	type: ItemType,
 	repeatable: boolean,
 	stackable: boolean,
+  animated: boolean
+	animatedImage?: string,
 	sortOrder: number,
 }
 
@@ -316,10 +318,12 @@ const register = (_id: number, item: Item, type: ItemType, options?: Partial<Ite
 		type,
 		repeatable: true,
 		stackable: true,
+		animated: false,
 		sortOrder,
 		...options||{},
 		// If defined, the "image" on the options object is actually an image key. Thus, we must resolve it after
 		// options are applied to override it with the correct value (falling back on item name if undefined)
+		animatedImage: options?.animated ? Images[`${options?.image || item}Animated`] : undefined,
 		image: Images[`${options?.image || item}`],
 	};
 	// if(id in IdToData){

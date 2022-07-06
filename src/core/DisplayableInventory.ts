@@ -3,6 +3,7 @@ import { getDisplayValue } from "./Localization";
 
 export type DisplayableSlot = {
     image: string,
+    animatedImage?: string,
     description: string,
     count: number,
     displayCount: boolean,
@@ -18,6 +19,7 @@ export const itemStackToDisplayableSlot = ({item, count, equipped}: ItemStack, i
 	const data =  itemToItemData(item);
 	return {
 		image: data.image,
+		animatedImage: data.animatedImage,
 		description: getDisplayValue(`description.${ItemType[data.type]}.${data.item}`, data.item),
 		// for unstackable items (food/key items) display count if count > 1, even if it's unstackable
 		displayCount: data.stackable ? data.type === ItemType.Arrow || count > 0 : count > 1,

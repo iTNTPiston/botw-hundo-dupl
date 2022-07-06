@@ -14,11 +14,12 @@ type DisplayPaneProps = {
     command: string,
     displayIndex: number,
     simulationState: SimulationState,
-	overlaySave: boolean,
+    overlaySave: boolean,
+    isAnimated: boolean,
     editCommand: (c: Command)=>void
 }
 
-export const DisplayPane: React.FC<DisplayPaneProps> = ({command,editCommand,displayIndex,simulationState,  overlaySave})=>{
+export const DisplayPane: React.FC<DisplayPaneProps> = ({command,editCommand,displayIndex,simulationState,  overlaySave, isAnimated})=>{
 	const [commandString, setCommandString] = useState<string>("");
 	const [hasError, setHasError] = useState<boolean>(false);
 	//const listProps = stacksToItemListProps(slots, numBroken, false);
@@ -86,20 +87,20 @@ export const DisplayPane: React.FC<DisplayPaneProps> = ({command,editCommand,dis
 								const inventorySlots = simulationState.displayablePouch.getDisplayedSlots();
 								for(let i=0;i<gameDataSlots.length && i<inventorySlots.length;i++){
 									doubleSlots.push(<DoubleItemSlot key={i}
-										first={{slot: gameDataSlots[i]}}
-										second={{slot: inventorySlots[i]}}
+										first={{slot: gameDataSlots[i], isAnimated}}
+										second={{slot: inventorySlots[i], isAnimated}}
 									/>);
 								}
 								if(gameDataSlots.length>inventorySlots.length){
 									for(let i=inventorySlots.length;i<gameDataSlots.length;i++){
 										doubleSlots.push(<DoubleItemSlot key={i+inventorySlots.length}
-											first={{slot: gameDataSlots[i]}}
+											first={{slot: gameDataSlots[i], isAnimated}}
 										/>);
 									}
 								}else if(inventorySlots.length > gameDataSlots.length){
 									for(let i=gameDataSlots.length;i<inventorySlots.length;i++){
 										doubleSlots.push(<DoubleItemSlot key={i + gameDataSlots.length}
-											second={{slot: inventorySlots[i]}}
+											second={{slot: inventorySlots[i], isAnimated}}
 										/>);
 									}
 								}
@@ -122,7 +123,7 @@ export const DisplayPane: React.FC<DisplayPaneProps> = ({command,editCommand,dis
 						overflowY: "auto"
 					} }>
 						<TitledList title="Game Data">
-							<ItemList slots={simulationState.displayableGameData.getDisplayedSlots()}/>
+							<ItemList slots={simulationState.displayableGameData.getDisplayedSlots()} isAnimated={isAnimated}/>
 						</TitledList>
 					
 					</div>
@@ -137,7 +138,7 @@ export const DisplayPane: React.FC<DisplayPaneProps> = ({command,editCommand,dis
 						color: "white"
 					} }>
 						<TitledList title={`Visible Inventory (Count=${simulationState.inventoryMCount})`}>
-							<ItemList slots={simulationState.displayablePouch.getDisplayedSlots()}/>
+							<ItemList slots={simulationState.displayablePouch.getDisplayedSlots()} isAnimated={isAnimated}/>
 						</TitledList>
 					
 					</div>
