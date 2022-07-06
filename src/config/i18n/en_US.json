@@ -178,8 +178,8 @@
   "description.Material.GiantAncientCore": "Giant Ancient Core",
   "description.Material.Wood": "Wood",
 
-  "description.Meal.SpeedFood": "Generic Hasty Food",
-  "description.Meal.EnduraFood": "Generic Enduring Food",
+  "description.Food.SpeedFood": "Generic Hasty Food",
+  "description.Food.EnduraFood": "Generic Enduring Food",
 
   "description.Key.SheikahSlate": "Sheikah Slate",
   "description.Key.MiphasGrace": "Mipha's Grace",

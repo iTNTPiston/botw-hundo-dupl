@@ -227,7 +227,7 @@ export class Slots {
 			return;
 		}
 		const thisData = itemToItemData(this.internalSlots[slot].item);
-		// Currently only supports corrupting arrows, material, meal and key items as durability values are not simulated on equipments
+		// Currently only supports corrupting arrows, material, food and key items as durability values are not simulated on equipments
 		if(thisData.type >= ItemType.Material || thisData.stackable){
 			this.internalSlots[slot].count = durability;
 		}

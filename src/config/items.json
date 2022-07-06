@@ -179,8 +179,8 @@
     { "item": "GiantAncientCore", "type": "Material" },
     { "id": "0x1f", "item": "Wood", "type": "Material" },
 
-    { "id": "0x40", "item": "SpeedFood", "type": "Meal", "options": { "stackable": false } },
-    { "item": "EnduraFood", "type": "Meal", "options": { "stackable": false } },
+    { "id": "0x40", "item": "SpeedFood", "type": "Food", "options": { "stackable": false } },
+    { "item": "EnduraFood", "type": "Food", "options": { "stackable": false } },
 
     { "item": "SheikahSlate", "type": "Key", "options": { "repeatable": false, "stackable": false } },
     { "item": "MiphasGrace", "type": "Key", "options": { "repeatable": false, "stackable": false } },

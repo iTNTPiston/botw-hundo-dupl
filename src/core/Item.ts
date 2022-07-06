@@ -5,11 +5,11 @@ import itemList from "config/items.json";
 export enum ItemType {
     Weapon = 0,
     Bow = 1,
-	Arrow = 2,
+    Arrow = 2,
     Shield = 3,
-	Armor = 4,
+    Armor = 4,
     Material = 5,
-    Meal = 6,
+    Food = 6,
     Key = 7
 }
 
@@ -20,7 +20,7 @@ export const ItemTypes = [
 	ItemType.Shield,
 	ItemType.Armor,
 	ItemType.Material,
-	ItemType.Meal,
+	ItemType.Food,
 	ItemType.Key
 ];
 
@@ -306,7 +306,7 @@ const TypeToCount = {
 	[ItemType.Armor]: 0,
 	[ItemType.Material]: 0,
 	[ItemType.Key]: 0,
-	[ItemType.Meal]: 0,
+	[ItemType.Food]: 0,
 };
 const register = (_id: number, item: Item, type: ItemType, options?: Partial<ItemData>) => {
 	const sortOrder = TypeToCount[type];
