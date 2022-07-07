@@ -20,6 +20,6 @@ const images = ((requireContext)=>{
 		}
 	});
 	return imgMap;
-})(r.context(".", false, /\.(?:png|webp)$/));
+})(r.context(".", true, /\.(?:png|webp)$/));
 
 export default images as {readonly [name:string]:string};
