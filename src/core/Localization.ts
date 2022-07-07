@@ -2,5 +2,5 @@
 import display from "config/i18n/en_US.json";
 
 export const getDisplayValue = (displayKey: string, defaultValue?: string) => {
-	return Object.entries(display).find(([key]) => key === displayKey)?.[1] || defaultValue || displayKey;
+	return (<never>display)[displayKey] ?? defaultValue ?? displayKey;
 };

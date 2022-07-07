@@ -5,8 +5,8 @@ import { useRef, useState } from "react";
 type OptionPageProps = {
 	interlaceInventory: boolean,
 	setInterlaceInventory: (value: boolean)=>void,
-	animatedIcons: boolean,
-	setAnimatedIcons: (value: boolean)=>void,
+	isIconAnimated: boolean,
+	setIsIconAnimated: (value: boolean)=>void,
 	commandText: string,
 	setCommandText: (value: string)=>void,
 }
@@ -14,8 +14,8 @@ type OptionPageProps = {
 export const OptionPage: React.FC<OptionPageProps> = ({
 	interlaceInventory,
 	setInterlaceInventory,
-	animatedIcons,
-	setAnimatedIcons,
+	isIconAnimated,
+	setIsIconAnimated,
 	commandText,
 	setCommandText
 }) => {
@@ -57,9 +57,9 @@ export const OptionPage: React.FC<OptionPageProps> = ({
 					<h3 className="Reference">
 						Enable Animated Item Icons
 						<button className="MainButton" onClick={()=>{
-							setAnimatedIcons(!animatedIcons);
+							setIsIconAnimated(!isIconAnimated);
 						}}>
-							{animatedIcons ? "ON" : "OFF"}
+							{isIconAnimated ? "ON" : "OFF"}
 						</button>
 					</h3>
 					<h4 className="Reference">

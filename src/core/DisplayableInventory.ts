@@ -3,7 +3,6 @@ import { getDisplayValue } from "./Localization";
 
 export type DisplayableSlot = {
     image: string,
-    animatedImage?: string,
     description: string,
     count: number,
     displayCount: boolean,
@@ -12,14 +11,13 @@ export type DisplayableSlot = {
 }
 
 export interface DisplayableInventory {
-    getDisplayedSlots: ()=>DisplayableSlot[]
+    getDisplayedSlots: (isIconAnimated: boolean)=>DisplayableSlot[]
 }
 
-export const itemStackToDisplayableSlot = ({item, count, equipped}: ItemStack, isBrokenSlot: boolean): DisplayableSlot => {
+export const itemStackToDisplayableSlot = ({item, count, equipped}: ItemStack, isBrokenSlot: boolean, isIconAnimated: boolean): DisplayableSlot => {
 	const data =  itemToItemData(item);
 	return {
-		image: data.image,
-		animatedImage: data.animatedImage,
+		image: isIconAnimated ? data.animatedImage ?? data.image : data.image,
 		description: getDisplayValue(`description.${ItemType[data.type]}.${data.item}`, data.item),
 		// for unstackable items (food/key items) display count if count > 1, even if it's unstackable
 		displayCount: data.stackable ? data.type === ItemType.Arrow || count > 0 : count > 1,

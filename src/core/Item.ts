@@ -33,7 +33,6 @@ export type ItemStack = {
 export enum Item {
     // Weapons
     MasterSword = "MasterSword",
-    MasterSwordAwakened = "MasterSwordAwakened",
     SpringLoadedHammer = "SpringLoadedHammer",
     SavageLynelSword = "SavageLynelSword",
     WoodcuttersAxe = "WoodcuttersAxe",
@@ -47,7 +46,7 @@ export enum Item {
     Bow = "Bow",
 
     // Arrows
-    Arrow = "Arrow",
+    NormalArrow = "NormalArrow",
     FireArrow = "FireArrow",
     IceArrow = "IceArrow",
     ShockArrow = "ShockArrow",
@@ -73,7 +72,7 @@ export enum Item {
     Hydromelon = "Hydromelon",
     SpicyPepper = "SpicyPepper",
     Voltfruit = "Voltfruit",
-    FleetLotusSeeds = "FleetLotusSeeds",
+    Lotus = "Lotus",
     MightyBananas = "MightyBananas",
     BigHeartyTruffle = "BigHeartyTruffle",
     HeartyTruffle = "HeartyTruffle",
@@ -107,7 +106,7 @@ export enum Item {
     RawBirdThigh = "RawBirdThigh",
     RawMeat = "RawMeat",
     RawBirdDrumstick = "RawBirdDrumstick",
-    CourserBeeHoney = "CourserBeeHoney",
+    Honey = "Honey",
     HylianRice = "HylianRice",
     BirdEgg = "BirdEgg",
     TabanthaWheat = "TabanthaWheat",
@@ -128,10 +127,10 @@ export enum Item {
     NaydrasClaw = "NaydrasClaw",
     ShardOfNaydrasFang = "ShardOfNaydrasFang",
     ShardOfNaydrasHorn = "ShardOfNaydrasHorn",
-    FaroshsScale = "FaroshsScale",
-    FaroshsClaw = "FaroshsClaw",
+    FaroshScale = "FaroshScale",
+    FaroshClaw = "FaroshClaw",
     ShardOfFaroshsFang = "ShardOfFaroshsFang",
-    ShardOfFaroshsHorn = "ShardOfFaroshsHorn",
+    FaroshHorn = "FaroshHorn",
     HeartySalmon = "HeartySalmon",
     HeartyBlueshellSnail = "HeartyBlueshellSnail",
     HeartyBass = "HeartyBass",
@@ -161,7 +160,7 @@ export enum Item {
     RestlessCricket = "RestlessCricket",
     BladedRhinoBeetle = "BladedRhinoBeetle",
     RuggedRhinoBeetle = "RuggedRhinoBeetle",
-    EnergeticRhinoBeetle = "EnergeticRhinoBeetle",
+    Beetle = "Beetle",
     SunsetFirefly = "SunsetFirefly",
     HotFootedFrog = "HotFootedFrog",
     TirelessFrog = "TirelessFrog",
@@ -184,7 +183,7 @@ export enum Item {
     MoblinGuts = "MoblinGuts",
     LizalfosHorn = "LizalfosHorn",
     LizalfosTalon = "LizalfosTalon",
-    LizalfosTail = "LizalfosTail",
+    Tail = "Tail",
     IcyLizalfosTail = "IcyLizalfosTail",
     RedLizalfosTail = "RedLizalfosTail",
     YellowLizalfosTail = "YellowLizalfosTail",
@@ -208,11 +207,11 @@ export enum Item {
     HinoxToenail = "HinoxToenail",
     HinoxTooth = "HinoxTooth",
     HinoxGuts = "HinoxGuts",
-    AncientScrew = "AncientScrew",
-    AncientSpring = "AncientSpring",
+    Screw = "Screw",
+    Spring = "Spring",
     AncientGear = "AncientGear",
-    AncientShaft = "AncientShaft",
-    AncientCore = "AncientCore",
+    Shaft = "Shaft",
+    Core = "Core",
     GiantAncientCore = "GiantAncientCore",
     Wood = "Wood",
 
@@ -221,24 +220,16 @@ export enum Item {
     EnduraFood = "EnduraFood",
 
     // Key Items
-    SheikahSlate = "SheikahSlate",
+    Slate = "Slate",
     MiphasGrace = "MiphasGrace",
-    MiphasGraceDisabled = "MiphasGraceDisabled",
     MiphasGracePlus = "MiphasGracePlus",
-    MiphasGracePlusDisabled = "MiphasGracePlusDisabled",
     RevalisGale = "RevalisGale",
-    RevalisGaleDisabled = "RevalisGaleDisabled",
     RevalisGalePlus = "RevalisGalePlus",
-    RevalisGalePlusDisabled = "RevalisGalePlusDisabled",
     DaruksProtection = "DaruksProtection",
-    DaruksProtectionDisabled = "DaruksProtectionDisabled",
     DaruksProtectionPlus = "DaruksProtectionPlus",
-    DaruksProtectionPlusDisabled = "DaruksProtectionPlusDisabled",
     UrbosasFury = "UrbosasFury",
-    UrbosasFuryDisabled = "UrbosasFuryDisabled",
     UrbosasFuryPlus = "UrbosasFuryPlus",
-    UrbosasFuryPlusDisabled = "UrbosasFuryPlusDisabled",
-    Paraglider = "Paraglider",
+    Glider = "Glider",
     KorokSeed = "KorokSeed",
     HestusGift = "HestusGift",
     SpiritOrb = "SpiritOrb",
@@ -265,27 +256,7 @@ export enum Item {
     MonsterSaddle = "MonsterSaddle",
     TravelersSaddle = "TravelersSaddle",
     AncientSaddle = "AncientSaddle",
-    TravelMedallion = "TravelMedallion",
-
-    // Deprecated Arrows
-    NormalArrow = "NormalArrow",
-
-    // Deprecated Materials
-    Lotus = "Lotus",
-    Honey = "Honey",
-    FaroshScale = "FaroshScale",
-    FaroshClaw = "FaroshClaw",
-    FaroshHorn = "FaroshHorn",
-    Beetle = "Beetle",
-    Tail = "Tail",
-    Spring = "Spring",
-    Shaft = "Shaft",
-    Core = "Core",
-    Screw = "Screw",
-
-    // Deprecated Key Items
-    Slate = "Slate",
-    Glider = "Glider"
+    TravelMedallion = "TravelMedallion"
 }
 
 type ItemData = {
@@ -310,7 +281,7 @@ const TypeToCount = {
 	[ItemType.Key]: 0,
 	[ItemType.Food]: 0,
 };
-const register = (_id: number, item: Item, type: ItemType, options?: Partial<ItemData>) => {
+const register = (item: Item, type: ItemType, options?: Partial<ItemData>) => {
 	const sortOrder = TypeToCount[type];
 	TypeToCount[type]++;
 	const data: ItemData = {
@@ -323,26 +294,16 @@ const register = (_id: number, item: Item, type: ItemType, options?: Partial<Ite
 		...options||{},
 		// If defined, the "image" on the options object is actually an image key. Thus, we must resolve it after
 		// options are applied to override it with the correct value (falling back on item name if undefined)
-		animatedImage: options?.animated ? Images[`${options?.image || item}Animated`] : undefined,
-		image: Images[`${options?.image || item}`],
+		animatedImage: options?.animated ? Images[`${options?.image ?? item}Animated`] : undefined,
+		image: Images[`${options?.image ?? item}`],
 	};
-	// if(id in IdToData){
-	// 	console.error("Multiple items registered to the same id: "+id+", ("+item+")");
-	// }
-	//IdToData[id] = data;
 	ItemToData[item] = data;
-};
-const getItemTypeValueByName = (type: string) => {
-	return Object.entries(ItemType).find(([key]) => key === type)?.[1];
 };
 
 itemList.items.forEach(itemData => {
-	// Default id to 0 if undefined in config file
-	const id = itemData.id ? Number(itemData.id) : 0;
-	register(id, itemData.item as Item, getItemTypeValueByName(itemData.type) as ItemType, itemData.options);
+	register(itemData.item as Item, (<never>ItemType)[itemData.type], itemData.options);
 });
 
-//export const idToItemData = (id: number): ItemData => IdToData[id];
 export const itemToItemData = (item: Item): ItemData => ItemToData[item] as ItemData;
 export const itemToArrowType = (item: Item): string => {
 	if(itemToItemData(item).type === ItemType.Arrow){

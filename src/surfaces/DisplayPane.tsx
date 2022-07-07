@@ -15,11 +15,11 @@ type DisplayPaneProps = {
     displayIndex: number,
     simulationState: SimulationState,
     overlaySave: boolean,
-    isAnimated: boolean,
+    isIconAnimated: boolean,
     editCommand: (c: Command)=>void
 }
 
-export const DisplayPane: React.FC<DisplayPaneProps> = ({command,editCommand,displayIndex,simulationState,  overlaySave, isAnimated})=>{
+export const DisplayPane: React.FC<DisplayPaneProps> = ({command,editCommand,displayIndex,simulationState,  overlaySave, isIconAnimated})=>{
 	const [commandString, setCommandString] = useState<string>("");
 	const [hasError, setHasError] = useState<boolean>(false);
 	//const listProps = stacksToItemListProps(slots, numBroken, false);
@@ -83,24 +83,24 @@ export const DisplayPane: React.FC<DisplayPaneProps> = ({command,editCommand,dis
 						{
 							(()=>{
 								const doubleSlots: JSX.Element[] = [];
-								const gameDataSlots = simulationState.displayableGameData.getDisplayedSlots();
-								const inventorySlots = simulationState.displayablePouch.getDisplayedSlots();
+								const gameDataSlots = simulationState.displayableGameData.getDisplayedSlots(isIconAnimated);
+								const inventorySlots = simulationState.displayablePouch.getDisplayedSlots(isIconAnimated);
 								for(let i=0;i<gameDataSlots.length && i<inventorySlots.length;i++){
 									doubleSlots.push(<DoubleItemSlot key={i}
-										first={{slot: gameDataSlots[i], isAnimated}}
-										second={{slot: inventorySlots[i], isAnimated}}
+										first={{slot: gameDataSlots[i]}}
+										second={{slot: inventorySlots[i]}}
 									/>);
 								}
 								if(gameDataSlots.length>inventorySlots.length){
 									for(let i=inventorySlots.length;i<gameDataSlots.length;i++){
 										doubleSlots.push(<DoubleItemSlot key={i+inventorySlots.length}
-											first={{slot: gameDataSlots[i], isAnimated}}
+											first={{slot: gameDataSlots[i]}}
 										/>);
 									}
 								}else if(inventorySlots.length > gameDataSlots.length){
 									for(let i=gameDataSlots.length;i<inventorySlots.length;i++){
 										doubleSlots.push(<DoubleItemSlot key={i + gameDataSlots.length}
-											second={{slot: inventorySlots[i], isAnimated}}
+											second={{slot: inventorySlots[i]}}
 										/>);
 									}
 								}
@@ -123,7 +123,7 @@ export const DisplayPane: React.FC<DisplayPaneProps> = ({command,editCommand,dis
 						overflowY: "auto"
 					} }>
 						<TitledList title="Game Data">
-							<ItemList slots={simulationState.displayableGameData.getDisplayedSlots()} isAnimated={isAnimated}/>
+							<ItemList slots={simulationState.displayableGameData.getDisplayedSlots(isIconAnimated)}/>
 						</TitledList>
 					
 					</div>
@@ -138,7 +138,7 @@ export const DisplayPane: React.FC<DisplayPaneProps> = ({command,editCommand,dis
 						color: "white"
 					} }>
 						<TitledList title={`Visible Inventory (Count=${simulationState.inventoryMCount})`}>
-							<ItemList slots={simulationState.displayablePouch.getDisplayedSlots()} isAnimated={isAnimated}/>
+							<ItemList slots={simulationState.displayablePouch.getDisplayedSlots(isIconAnimated)}/>
 						</TitledList>
 					
 					</div>

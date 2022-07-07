@@ -115,7 +115,7 @@ export class Slots {
 		// Need to add new slot
 		// Key item check: if the key item or master sword already exists in the first tab, do not add
 		if(mCount != 0){
-			if(data.type === ItemType.Key || item === Item.MasterSword || item === Item.MasterSwordAwakened) {
+			if(data.type === ItemType.Key || item === Item.MasterSword) {
 				let i=0;
 				while(i<this.internalSlots.length && itemToItemData(this.internalSlots[i].item).type < data.type){
 					i++;

@@ -19,8 +19,8 @@ export class VisibleInventory implements DisplayableInventory{
 		return new VisibleInventory(this.slots.deepClone(), this.count);
 	}
 
-	public getDisplayedSlots(): DisplayableSlot[] {
-		return this.slots.getSlotsRef().map((stack, i)=>itemStackToDisplayableSlot(stack, i>=this.count));
+	public getDisplayedSlots(isIconAnimated: boolean): DisplayableSlot[] {
+		return this.slots.getSlotsRef().map((stack, i)=>itemStackToDisplayableSlot(stack, i>=this.count, isIconAnimated));
 	}
 
 	public getSlots(): Slots {

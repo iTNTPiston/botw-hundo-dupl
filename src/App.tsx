@@ -33,7 +33,7 @@ export const App: React.FC =  () => {
 	const [page, setPageInState] = useState<string>("#simulation");
 	// Option States
 	const [interlaceInventory, setInterlaceInventory] = useState<boolean>(false);
-	const [animatedIcons, setAnimatedIcons] = useState<boolean>(false);
+	const [isIconAnimated, setIsIconAnimated] = useState<boolean>(false);
 
 	const [commands, setCommands] = useState<Command[]>(getDefaultCommands());
 	const [selectedSaveName, setSelectedSaveName] = useState<string>("");
@@ -259,13 +259,13 @@ export const App: React.FC =  () => {
 												if (selectedSaveName === ""){
 													const manualSave = simulationStates[displayIndex].getManualSave();
 													if(manualSave){
-														return <ItemList slots={manualSave.getDisplayedSlots()} isAnimated={animatedIcons}/>;
+														return <ItemList slots={manualSave.getDisplayedSlots(isIconAnimated)}/>;
 													}
 												}else if(selectedSaveName){
 													const namedSaves = simulationStates[displayIndex].getNamedSaves();
 													if(selectedSaveName in namedSaves){
 														const save = namedSaves[selectedSaveName];
-														return <ItemList slots={save.getDisplayedSlots()} isAnimated={animatedIcons}/>;
+														return <ItemList slots={save.getDisplayedSlots(isIconAnimated)}/>;
 													}
 												}
 												return null;
@@ -289,7 +289,7 @@ export const App: React.FC =  () => {
 							{displayIndex >= 0 && displayIndex < commands.length &&
 					<DisplayPane 
 						overlaySave={interlaceInventory}
-						isAnimated={animatedIcons}
+						isIconAnimated={isIconAnimated}
 						displayIndex={displayIndex}
 						command={commands[displayIndex].getDisplayString()}
 						simulationState={simulationStates[displayIndex]}
@@ -312,8 +312,8 @@ export const App: React.FC =  () => {
 					<OptionPage 
 						interlaceInventory={interlaceInventory}
 						setInterlaceInventory={setInterlaceInventory}
-						animatedIcons={animatedIcons}
-						setAnimatedIcons={setAnimatedIcons}
+						isIconAnimated={isIconAnimated}
+						setIsIconAnimated={setIsIconAnimated}
 						commandText={commandText}
 						setCommandText={(value)=>{
 							if(value !== commandText){
