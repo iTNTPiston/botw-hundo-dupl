@@ -1,6 +1,8 @@
 import Images from "assets/img";
 
-import ItemMap from "config/items.json";
+import itemDataJson from "config/items.json";
+type ItemDataObject = { type: string, options?: Partial<ItemData> };
+const itemMap = itemDataJson as Record<string, ItemDataObject>;
 
 export enum ItemType {
     Weapon = 0,
@@ -41,7 +43,7 @@ type ItemData = {
 	sortOrder: number,
 }
 
-const ItemToData: {[k: string]: ItemData} = {};
+const ItemToData: Record<string, ItemData> = {};
 const TypeToCount = {
 	[ItemType.Weapon]: 0,
 	[ItemType.Bow]: 0,
@@ -68,15 +70,15 @@ const register = (item: string, type: ItemType, options?: Partial<ItemData>) => 
 		animatedImage: options?.animated ? Images[`${ItemType[type]}/${options?.image ?? item}Animated`] : undefined,
 		image: Images[`${ItemType[type]}/${options?.image ?? item}`],
 	};
-	(<any>ItemToData)[item] = data;
+	ItemToData[item] = data;
 };
 
-for (const item in ItemMap) {
-	const data = (<any>ItemMap)[item];
-	register(item, (<never>ItemType)[data.type], data.options);
+for (const item in itemMap) {
+	const data: ItemDataObject = itemMap[item];
+	register(item, ItemType[data.type as keyof typeof ItemType], data.options);
 }
 
-export const itemToItemData = (item: string): ItemData => (<never>ItemToData)[item] as ItemData;
+export const itemToItemData = (item: string): ItemData => ItemToData[item] as ItemData;
 export const itemExists = (item: string): boolean => !!itemToItemData(item);
 export const itemToArrowType = (item: string): string => {
 	if(itemToItemData(item).type === ItemType.Arrow){
