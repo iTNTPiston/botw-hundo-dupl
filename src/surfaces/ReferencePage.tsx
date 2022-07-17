@@ -29,7 +29,8 @@ export const ReferencePage: React.FC = React.memo(()=>{
 					</BodyText>
 					<SubHeader>Number of Items</SubHeader>
 					<BodyText>
-						When specifying number of items, you can use an integer or <Emphasized>all</Emphasized>, which is equivalent to 9999999 and can be used to remove all items without specifying the real count
+						When specifying number of items, you can use an integer or <Emphasized>all</Emphasized>, which is equivalent to -1.
+						When using -1 as the count in Remove commands, it will remove all items.
 					</BodyText>
 					
 					<SubHeader>Metadata</SubHeader>

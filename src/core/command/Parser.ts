@@ -327,7 +327,7 @@ const parseItemStacks = (tokens: string[], from: number, searchFunc: (word: stri
 
 const parseInteger = (token: string): number|undefined => {
 	if(keywordMatch(token, "all")){
-		return 9999999;
+		return -1;
 	}
 	const num = parseInt(token);
 	if(!Number.isInteger(num)){

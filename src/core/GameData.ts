@@ -17,7 +17,13 @@ export class GameData implements DisplayableInventory {
 	}
     
 	public syncWith(pouch: VisibleInventory) {
-		this.slots = pouch.getSlots().deepClone();
+		if(pouch.getCount() <=0){
+			// inventory nuking.
+			// when mCount <=0, gamedata is nuked when syncing with pouch
+			this.slots = new Slots([]);
+		}else{
+			this.slots = pouch.getSlots().deepClone();
+		}
 	}
 
 	public updateLife(life: number, slot: number){
